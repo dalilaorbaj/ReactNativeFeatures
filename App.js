@@ -6,7 +6,6 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Home from './Views/Home';
 import HoraYTemperatura from './Views/HoraYTemperatura';
 
-
 export default function App() {
 
   const Stack = createNativeStackNavigator();
