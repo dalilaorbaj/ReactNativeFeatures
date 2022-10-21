@@ -6,6 +6,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Home from './Views/Home';
 import HoraYTemperatura from './Views/HoraYTemperatura';
 import Contactos from './Views/Contactos';
+import NroEmergencia from './Views/NroEmergencia';
 
 export default function App() {
 
@@ -26,6 +27,11 @@ export default function App() {
         <Stack.Screen name="Contactos" component={Contactos}
           options={{
           headerTitle: "Contactos",
+        }}/>
+
+        <Stack.Screen name="NroEmergencia" component={NroEmergencia}
+          options={{
+          headerTitle: "Nro de emergencia",
         }}/>
       </Stack.Navigator>
     </NavigationContainer>
