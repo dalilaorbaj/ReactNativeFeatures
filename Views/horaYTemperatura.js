@@ -60,6 +60,8 @@ const HoraYTemperatura = () => {
 
 // API URL: https://rapidapi.com/weatherbit/api/weather/
 
+// BUSCAR API QUE ANDE WEY
+
   return (
     <View style={styles.container}>
 

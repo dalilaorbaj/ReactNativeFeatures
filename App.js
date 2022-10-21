@@ -5,6 +5,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 // views import 
 import Home from './Views/Home';
 import HoraYTemperatura from './Views/HoraYTemperatura';
+import Contactos from './Views/Contactos';
 
 export default function App() {
 
@@ -12,7 +13,7 @@ export default function App() {
 
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="HoraTemp">
+      <Stack.Navigator initialRouteName="Contactos">
         <Stack.Screen name="Home" component={Home} 
         options={{
           headerShown: false,
@@ -20,6 +21,11 @@ export default function App() {
         <Stack.Screen name="HoraTemp" component={HoraYTemperatura}
          options={{
          headerTitle: "Hora y temperatura actuales",
+        }}/>
+
+        <Stack.Screen name="Contactos" component={Contactos}
+          options={{
+          headerTitle: "Contactos",
         }}/>
       </Stack.Navigator>
     </NavigationContainer>
