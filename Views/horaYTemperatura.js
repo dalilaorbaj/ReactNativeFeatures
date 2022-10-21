@@ -9,7 +9,8 @@ const HoraYTemperatura = () => {
 
   const [lat, setLat] = useState(null);
   const [long, setLong] = useState(null);
-  const [date, setDate] = useState(null)
+  const [date, setDate] = useState(null);
+  const [temp, setTemp] = useState(null);
   const [errorMsg, setErrorMsg] = useState(null);
 
   const getClimate = async () => {
@@ -17,7 +18,7 @@ const HoraYTemperatura = () => {
     const options = {
       method: 'GET',
       url: 'https://weatherbit-v1-mashape.p.rapidapi.com/forecast/minutely',
-      params: { lat: '35.5', lon: '-78.5' },
+      params: { lat: lat, lon: long },
       headers: {
         'X-RapidAPI-Key': '2a13a20fc9msh9549bb43c8392a8p1a6917jsnacf5a091ad14',
         'X-RapidAPI-Host': 'weatherbit-v1-mashape.p.rapidapi.com'
@@ -25,7 +26,8 @@ const HoraYTemperatura = () => {
     };
 
     axios.request(options).then(function (response) {
-      console.log(response.data);
+      console.log(response.data.data[0].temp);
+      return response.data.data[0].temp;
     }).catch(function (error) {
       console.error(error);
     });
@@ -45,6 +47,14 @@ const HoraYTemperatura = () => {
       let locat = await Location.getCurrentPositionAsync({});
       setLat(locat.coords.latitude)
       setLong(locat.coords.longitude)
+
+      if (lat !== null && long !== null) {
+        let clim = await getClimate()
+        console.log('clima', clim);
+        setTemp(clim)
+        
+      }
+
     })();
   }, []);
 
@@ -56,7 +66,7 @@ const HoraYTemperatura = () => {
       <View style={{ marginTop: 15 }}>
         <Text style={styles.text}>Hora actual: {date}</Text>
         <Text style={styles.text}>Temperatura actual: </Text>
-        <Text style={styles.text}>: </Text>
+        <Text style={styles.text}>{temp ? temp : null} </Text>
 
       </View>
     </View>
