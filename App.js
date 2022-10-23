@@ -4,9 +4,11 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 // views import 
 import Home from './Views/Home';
-import HoraYTemperatura from './Views/HoraYTemperatura';
-import Contactos from './Views/Contactos';
-import NroEmergencia from './Views/NroEmergencia';
+import HoraYTemperatura from './Views/horaYTemperatura';
+import Contactos from './Views/contactos';
+import NroEmergencia from './Views/nroEmergencia';
+import VideoFavorito from './Views/videoFavorito';
+
 
 export default function App() {
 
@@ -33,6 +35,12 @@ export default function App() {
           options={{
           headerTitle: "Nro de emergencia",
         }}/>
+
+        <Stack.Screen name="VideoFavorito" component={VideoFavorito}
+          options={{
+          headerTitle: "Video favorito",
+        }}/>
+
       </Stack.Navigator>
     </NavigationContainer>
   );
