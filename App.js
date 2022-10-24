@@ -8,6 +8,7 @@ import HoraYTemperatura from './Views/horaYTemperatura';
 import Contactos from './Views/contactos';
 import NroEmergencia from './Views/nroEmergencia';
 import VideoFavorito from './Views/videoFavorito';
+import Identificacion from './Views/Identificacion'
 
 
 export default function App() {
@@ -16,30 +17,36 @@ export default function App() {
 
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Contactos">
-        <Stack.Screen name="Home" component={Home} 
-        options={{
-          headerShown: false,
-        }}/>
+      <Stack.Navigator initialRouteName="Identificacion">
+        <Stack.Screen name="Home" component={Home}
+          options={{
+            headerShown: false,
+          }} />
         <Stack.Screen name="HoraTemp" component={HoraYTemperatura}
-         options={{
-         headerTitle: "Hora y temperatura actuales",
-        }}/>
+          options={{
+            headerTitle: "Hora y temperatura actuales",
+          }} />
 
         <Stack.Screen name="Contactos" component={Contactos}
           options={{
-          headerTitle: "Contactos",
-        }}/>
+            headerTitle: "Contactos",
+          }} />
 
         <Stack.Screen name="NroEmergencia" component={NroEmergencia}
           options={{
-          headerTitle: "Nro de emergencia",
-        }}/>
+
+            headerTitle: "Nro de emergencia",
+          }} />
 
         <Stack.Screen name="VideoFavorito" component={VideoFavorito}
           options={{
-          headerTitle: "Video favorito",
-        }}/>
+            headerTitle: "Video favorito",
+          }} />
+
+        <Stack.Screen name="Identificacion" component={Identificacion}
+          options={{
+            headerTitle: "Literalmente nosotras",
+          }} />
 
       </Stack.Navigator>
     </NavigationContainer>

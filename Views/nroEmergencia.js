@@ -1,11 +1,10 @@
-import { View, Text, SafeAreaView, StyleSheet, TextInput, TouchableOpacity, Vibration, ImageBackground, ScrollView } from 'react-native'
+import { View, Text, SafeAreaView, StyleSheet, TextInput, TouchableOpacity, ScrollView } from 'react-native'
 import React, {useState, useContext} from 'react'
 import AsyncStorage from '@react-native-async-storage/async-storage'
 
-//CAMBIAR LOS ESTILOS DE ESTA VIEW
+//CAMBIAR LOS ESTILOS DE ESTA VIEW (titulo y botones, centrar y temañao)
 
 
-const image = { uri: "https://reactjs.org/logo-og.png" };
 
 const NumeroEmergencia = () => {
     const [numero, setNumero] = useState('')
@@ -18,7 +17,6 @@ const NumeroEmergencia = () => {
             alert('Numero guardado')
         } else{
             alert('Ingrese un numero')
-            Vibration.vibrate(3 * 1000)
         }
     }
 
@@ -33,13 +31,9 @@ const NumeroEmergencia = () => {
         <SafeAreaView style={{flex:1}}>
             <View style={styles.container}>
                 <View style={styles.container}>
-                    <ImageBackground source={image} resizeMode="cover" style={styles.image}>
                         <ScrollView>
-                        <Text style={styles.titleText}>
-                            AsyncStorage in React Native
-                        </Text>
                         <TextInput
-                            placeholder='Enter Mobile Number'
+                            placeholder='Ingresa el número de emergencia'
                             value={numero}
                             onChangeText={(data)=>setNumero(data)}
                             keyboardType='numeric'
@@ -47,14 +41,13 @@ const NumeroEmergencia = () => {
                             style={styles.textInputStyle}
                         />
                         <TouchableOpacity style={styles.buttonStyle} onPress={saveValue}>
-                            <Text style={styles.buttonTextStyle}>Save Value</Text>
+                            <Text style={styles.buttonTextStyle}>Guardar</Text>
                         </TouchableOpacity>
                         <TouchableOpacity style={styles.buttonStyle} onPress={getValue}>
-                            <Text style={styles.buttonTextStyle}>Get Value</Text>
+                            <Text style={styles.buttonTextStyle}>¿Cuál es mi número de emergencia?</Text>
                         </TouchableOpacity>
                         <Text style={styles.textStyle}>{value}</Text>
                         </ScrollView>
-                    </ImageBackground>
                     </View>
                
             </View>
@@ -84,21 +77,21 @@ const styles = StyleSheet.create({
         height: 60,
         width: '100%',
         borderWidth: 1,
-        borderColor: 'blue',
+        borderColor: 'purple',
         fontSize: 22,
         backgroundColor: 'white',
     },
     buttonStyle: {
         fontSize: 16,
         color: 'white',
-        backgroundColor: 'blue',
+        backgroundColor: 'purple',
         padding: 5,
         marginTop: 10,
         minWidth: 250,
         justifyContent: 'center'
     },
     buttonTextStyle: {
-        padding: 5,
+        padding: 15,
         color: 'white',
         textAlign: 'center',
         fontSize: 22
