@@ -10,6 +10,8 @@ import {
 } from "react-native";
 import * as Contacts from "expo-contacts";
 
+//si llegamos poner un indicador si es el Numero de Contacto predeterminado de emergencia (con algún icono o similar)
+
 export default function Contactos() {
   const [contacts, setContacts] = useState([]);
     const [modalVisible, setModalVisible] = useState(false);
