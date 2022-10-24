@@ -1,6 +1,8 @@
 import * as React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { FondoProvider } from './Contexts/FondoImagenContext';
+
 
 // views import 
 import Home from './Views/Home';
@@ -9,6 +11,8 @@ import Contactos from './Views/contactos';
 import NroEmergencia from './Views/nroEmergencia';
 import VideoFavorito from './Views/videoFavorito';
 import Identificacion from './Views/Identificacion'
+import ImagenFondo from './Views/ImagenFondo'
+
 
 
 export default function App() {
@@ -16,8 +20,9 @@ export default function App() {
   const Stack = createNativeStackNavigator();
 
   return (
+    <FondoProvider>
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Identificacion">
+      <Stack.Navigator initialRouteName="Contactos">
         <Stack.Screen name="Home" component={Home}
           options={{
             headerShown: false,
@@ -48,8 +53,16 @@ export default function App() {
             headerTitle: "Literalmente nosotras",
           }} />
 
+        <Stack.Screen name="ImagenFondo" component={ImagenFondo}
+          options={{
+            headerTitle: "Imágen fondo",
+          }} />
+
       </Stack.Navigator>
     </NavigationContainer>
+    </FondoProvider>
+
+
   );
 }
 

@@ -1,5 +1,5 @@
 import { StatusBar } from "expo-status-bar";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext} from "react";
 import {
   StyleSheet,
   Text,
@@ -7,14 +7,19 @@ import {
   FlatList,
   TouchableOpacity,
   Modal,
+  ImageBackground,
 } from "react-native";
 import * as Contacts from "expo-contacts";
+import FondoImagenContext from '../Contexts/FondoImagenContext';
+
 
 //si llegamos poner un indicador si es el Numero de Contacto predeterminado de emergencia (con algún icono o similar)
 
 export default function Contactos() {
   const [contacts, setContacts] = useState([]);
     const [modalVisible, setModalVisible] = useState(false);
+    const {fondo, setFondo} = useContext(FondoImagenContext);
+
 
   const getContacts = async () => {
     const { status } = await Contacts.requestPermissionsAsync();
@@ -51,8 +56,6 @@ export default function Contactos() {
   console.log(modalVisible);
 
   return (
-    // LA CONXHA NO PUEDO ACCEDER AL NUM DE TELEFONO
-
 
     <View style={styles.container}>
       <FlatList
