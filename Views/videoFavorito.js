@@ -4,6 +4,8 @@ import { Video, AVPlaybackStatus } from 'expo-av';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 //HACER ESTA PANTALLA QUE NO ANDA XD
+// cambiar el tamaño y color del boton guardar
+//tambien poner un input bien (como el de nroEmergencia)
 
 const ReproductorVideoView = () => {
     const video = useRef(null);

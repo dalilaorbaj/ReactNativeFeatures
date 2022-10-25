@@ -14,7 +14,7 @@ const NumeroEmergencia = () => {
         if(numero){
             AsyncStorage.setItem('numero', numero)
             setNumero('')
-            alert('Numero guardado')
+            alert('Numero guardado bro')
         } else{
             alert('Ingrese un numero')
         }
@@ -32,14 +32,16 @@ const NumeroEmergencia = () => {
             <View style={styles.container}>
                 <View style={styles.container}>
                         <ScrollView>
+                        <View style={styles.input}>
                         <TextInput
-                            placeholder='Ingresa el número de emergencia'
+                            placeholder='Ingresa n° de emergencia'
                             value={numero}
                             onChangeText={(data)=>setNumero(data)}
                             keyboardType='numeric'
                             underlineColorAndroid='transparent'
                             style={styles.textInputStyle}
                         />
+                        </View>
                         <TouchableOpacity style={styles.buttonStyle} onPress={saveValue}>
                             <Text style={styles.buttonTextStyle}>Guardar</Text>
                         </TouchableOpacity>
@@ -57,7 +59,12 @@ const NumeroEmergencia = () => {
 
 const styles = StyleSheet.create({
     container: {
+        marginTop: 50,
+        width: '90%',
+        alignItems: 'center',
         flex: 1,
+        justifyContent: 'center',
+        marginLeft: 10,    
     },
     container2: {
         flex: 1,
@@ -65,6 +72,10 @@ const styles = StyleSheet.create({
         alignItems: "center",
         padding: 20,
     },  
+    input: {
+        marginTop: 50,
+        marginBottom: 50,
+    },
     titleText: {
         fontSize: 22,
         fontWeight: 'bold',
@@ -73,10 +84,12 @@ const styles = StyleSheet.create({
         backgroundColor: 'rgba(255,255,255,0.25)',
     },
     textInputStyle: {
+        marginTop: 20,
         textAlign: 'center',
         height: 60,
         width: '100%',
-        borderWidth: 1,
+        borderRadius: 10,
+        borderWidth: 3,
         borderColor: 'purple',
         fontSize: 22,
         backgroundColor: 'white',
@@ -88,17 +101,23 @@ const styles = StyleSheet.create({
         padding: 5,
         marginTop: 10,
         minWidth: 250,
-        justifyContent: 'center'
+        justifyContent: 'center', 
+        borderRadius: 10,
     },
     buttonTextStyle: {
         padding: 15,
         color: 'white',
         textAlign: 'center',
-        fontSize: 22
+        fontSize: 22, 
     },
     textStyle: {
         padding: 10,
         textAlign: 'center',
+        fontSize: 30,
+        color: 'purple',
+        marginTop: 20,
+        textDecorationLine: 'underline',
+
     },
     big: {
         fontSize: 18,
@@ -126,7 +145,7 @@ const styles = StyleSheet.create({
     },
     appButtonContainer: {
     elevation: 8,
-    backgroundColor: "#009688",
+    backgroundColor: "purple",
     borderRadius: 10,
     paddingVertical: 10,
     paddingHorizontal: 12,

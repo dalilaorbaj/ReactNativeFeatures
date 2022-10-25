@@ -40,7 +40,7 @@ export default function Contactos() {
             contact.phoneNumbers.map((number, index) => {
                 return(
                     <>
-                    <Text style={[styles.text, {marginTop: 14}]} key={index}>Tel: {number.number}</Text>
+                    <Text style={[styles.text, {marginTop: 14}]} key={index}>{number.number}</Text>
                     </>
                 )
             })
@@ -64,7 +64,7 @@ export default function Contactos() {
             
           <TouchableOpacity>
             <View style={styles.contenedor}>
-              <Text style={styles.text}>Nombre: {item.name}</Text>
+              <Text style={styles.text}> {item.name}</Text>
               {getPhoneNumbers(item)}
             </View>
           </TouchableOpacity>          
@@ -80,17 +80,31 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#fff",
+    borderColor: "purple",
     alignItems: "center",
     justifyContent: "center",
+    borderRadius: 10,
   },
   contenedor: {
     width: 250,
     height: "auto",
     margin: 20,
+    backgroundColor: 'white',
+    borderColor: 'purple',
+    borderWidth:5,
+    width: 350, 
+    height: 150, 
+    borderRadius: 20,
   },
   text: {
+    marginTop:10,
     fontSize: 20,
-    color: "black",
+    color: "purple",
+    fontFamilyName: 'bold',
+    textAlign: 'center',
+    justifyContent: 'center',
+    alignItems: 'center',
+    flex:1,
   },
     centeredView: {
         flex: 1,

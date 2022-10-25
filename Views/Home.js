@@ -44,7 +44,7 @@ const Home = () => {
         <Icon name="people-outline" size={80} color="purple" />
       </TouchableOpacity>
 
-      <TouchableOpacity onPress={()=> navigation.navigate("Contactos")}>
+      <TouchableOpacity onPress={()=> navigation.navigate("ImagenFondo")}>
         <Icon6 name="photo" size={70} color="purple" />
       </TouchableOpacity>
       </View>

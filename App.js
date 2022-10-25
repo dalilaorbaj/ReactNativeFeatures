@@ -12,6 +12,9 @@ import NroEmergencia from './Views/nroEmergencia';
 import VideoFavorito from './Views/videoFavorito';
 import Identificacion from './Views/Identificacion'
 import ImagenFondo from './Views/ImagenFondo'
+//import MensajesUsuario from './Views/MensajesUsuario'
+//import LlamadoEmergencia from './Views/LlamadoEmergencia'
+
 
 
 
@@ -22,7 +25,7 @@ export default function App() {
   return (
     <FondoProvider>
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Contactos">
+      <Stack.Navigator initialRouteName="VideoFavorito">
         <Stack.Screen name="Home" component={Home}
           options={{
             headerShown: false,
@@ -57,7 +60,17 @@ export default function App() {
           options={{
             headerTitle: "Imágen fondo",
           }} />
+{/*
+        <Stack.Screen name="MensajesUsuario" component={MensajesUsuario}
+          options={{
+            headerTitle: "Mensajes Usuario",
+          }} />
 
+<Stack.Screen name="LlamadoEmergencia" component={LlamadoEmergencia}
+          options={{
+            headerTitle: "Llamado Emergencia",
+          }} />
+        */}
       </Stack.Navigator>
     </NavigationContainer>
     </FondoProvider>

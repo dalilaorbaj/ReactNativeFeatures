@@ -9,6 +9,7 @@ import {
   import React, { useState, useEffect } from "react";
   import QRCode from "react-native-qrcode-svg";
   import { BarCodeScanner } from "expo-barcode-scanner";
+import { WhiteBalance } from "expo-camera";
   
   //cambiar estilos de esta pagina drasticamente
   
@@ -36,8 +37,8 @@ import {
         <Modal visible={modalShown} animationType="slide" transparent={true}>
           <View style={styles.modalContainer1}>
             <View style={styles.modalContainer2}>
-              <Text style={{ margin: 10 }}>{scanData}</Text>
-              <Button title="Cerrar" onPress={() => setModalShown(!modalShown)} />
+              <Text style={{ margin: 30, color: 'white',}}>{scanData}</Text>
+                <Button style={{bakcgroundColor: 'white',}} title="Cerrar" onPress={() => setModalShown(!modalShown)} />
             </View>
           </View>
         </Modal>
@@ -46,7 +47,7 @@ import {
               <QRCode value="Dalila Orbaj y Carolina Teselman uWu" />
           </View>
           <TouchableOpacity style={styles.button}>
-            <Text>Escanear código QR</Text>
+            <Text style={styles.textButton}>Escanear código QR</Text>
           </TouchableOpacity>
           <BarCodeScanner
             style={{ height: 600, width: 300 }}
@@ -78,7 +79,10 @@ import {
       alignItems: "center",
       height: 25,
       justifyContent: "center",
-      backgroundColor: "lightgreen",
+      backgroundColor: "purple",
+    },
+    textButton:{
+      color: 'white',
     },
     modalContainer1: {
       justifyContent: "center",
@@ -91,7 +95,7 @@ import {
       height: 200,
       justifyContent: "center",
       alignItems: "center",
-      backgroundColor: "#84b6f4",
+      backgroundColor: "purple",
       shadowColor: "#000",
       shadowOffset: {
         width: 0,
@@ -101,6 +105,14 @@ import {
       shadowRadius: 4,
       elevation: 5,
       borderRadius: 10,
+      width: 240, 
+      height: 170,
+
+    },
+    buttonModal:{
+      backgroundColor: 'white',
+      borderRadius: 10,
+
     },
     QR:{
         marginTop: 100,
