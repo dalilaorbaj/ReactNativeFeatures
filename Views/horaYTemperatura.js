@@ -1,7 +1,8 @@
-import { View, Text, StyleSheet } from 'react-native'
-import React, { useState, useEffect } from 'react'
+import { View, Text, StyleSheet, ImageBackground } from 'react-native'
+import React, { useState, useEffect, useContext } from 'react'
 import * as Location from 'expo-location';
 import axios from 'axios';
+import FondoImagenContext from '../Contexts/FondoImagenContext';
 
 
 
@@ -13,24 +14,19 @@ const HoraYTemperatura = () => {
   const [temp, setTemp] = useState(null);
   const [errorMsg, setErrorMsg] = useState(null);
 
+  const { fondo, setFondo } = useContext(FondoImagenContext);
+
+
   const getClimate = async () => {
 
-    const options = {
-      method: 'GET',
-      url: 'https://weatherbit-v1-mashape.p.rapidapi.com/forecast/minutely',
-      params: { lat: lat, lon: long },
-      headers: {
-        'X-RapidAPI-Key': '2a13a20fc9msh9549bb43c8392a8p1a6917jsnacf5a091ad14',
-        'X-RapidAPI-Host': 'weatherbit-v1-mashape.p.rapidapi.com'
-      }
-    };
-
-    axios.request(options).then(function (response) {
-      console.log(response.data.data[0].temp);
-      return response.data.data[0].temp;
-    }).catch(function (error) {
-      console.error(error);
-    });
+    axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&appid=d8f07e58cc79c03c12ffbb3b6ca4bdf0&units=metric`,
+    )
+      .then(function (response) {
+        console.log(response.data.main.temp);
+        setTemp(response.data.main.temp);
+      }).catch(function (error) {
+        console.error(error);
+      });
   }
 
   useEffect(() => {
@@ -49,29 +45,33 @@ const HoraYTemperatura = () => {
       setLong(locat.coords.longitude)
 
       if (lat !== null && long !== null) {
-        let clim = await getClimate()
-        console.log('clima', clim);
-        setTemp(clim)
-        
+        await getClimate();
+
       }
 
     })();
   }, []);
 
-// API URL: https://rapidapi.com/weatherbit/api/weather/
 
-// BUSCAR API QUE ANDE WEY
+
+  // API URL: https://rapidapi.com/weatherbit/api/weather/
+
+  // BUSCAR API QUE ANDE WEY
 
   return (
     <View style={styles.container}>
 
-      <View style={{ marginTop: 15 }}>
-        <Text style={styles.text}>Hora actual: {date}</Text>
-        <Text style={styles.text}>Temperatura actual: </Text>
-        <Text style={styles.text}>{temp ? temp : null} </Text>
+      <ImageBackground source={{ uri: fondo }} resizeMode="cover" style={styles.image}>
 
-      </View>
-    </View>
+
+        <View style={{ marginTop: 15 }}>
+          <Text style={styles.text}>Hora actual: {date}</Text>
+          <Text style={styles.text}>Temperatura actual: </Text>
+          <Text style={styles.text}>{temp ? temp : "buscando..."} </Text>
+
+        </View>
+      </ImageBackground>
+    </View >
   )
 }
 
@@ -80,11 +80,14 @@ export default HoraYTemperatura
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    marginTop: 55,
-    marginLeft: 10
   },
   text: {
     marginTop: 10,
-    fontSize: 30
-  }
+    fontSize: 30,
+    color: "white",
+  },
+  image: {
+    flex: 1,
+    justifyContent: 'center',
+  },
 });
