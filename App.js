@@ -48,7 +48,7 @@ export default function App() {
 
         <Stack.Screen name="VideoFavorito" component={VideoFavorito}
           options={{
-            headerTitle: "Video favorito",
+            headerTitle: "¿Cuál es tu video favorito?",
           }} />
 
         <Stack.Screen name="Identificacion" component={Identificacion}

@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, Dimensions, TextInput, Button } from 'react-native'
+import { StyleSheet, View, Dimensions, TextInput, TouchableOpacity, Text } from 'react-native'
 import React, { useState, useRef, useEffect } from 'react'
 import { Video, AVPlaybackStatus } from 'expo-av';
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -37,12 +37,24 @@ const ReproductorVideoView = () => {
         <TextInput 
             value={videoText}
             onChangeText={setVideoText}
-            placeholder='Ingresar Video'
+            placeholder='Ingresá un video...'
+            style={styles.input}
         />
+        {/*<View style={styles.button}>
         <Button 
             title='Guardar'
+            style={{backgroundColor:'#1E6738'}}
             onPress={async() => setVideoTextStorage()}
         />
+    </View>*/}
+
+        <TouchableOpacity
+          style={styles.button}
+          onPress={async() => setVideoTextStorage()}
+          underlayColor='#fff'>
+          <Text style={styles.loginText}>Guardar</Text>
+ </TouchableOpacity>
+
         <Video
           ref={video}
           style={styles.video}
@@ -66,7 +78,15 @@ const windowHeight = Dimensions.get('window').height;
 const styles = StyleSheet.create({
     container: {
         justifyContent: 'center',
-        flex: .8
+        flex: .8, 
+    },
+    input:{
+      borderRadius: 10,
+      borderColor: 'purple',
+      borderWidth: 2,
+      backgroundColor: 'white',
+      margin: 10,
+      padding: 10,
     },
     video: {
         alignSelf: 'center',
@@ -74,4 +94,18 @@ const styles = StyleSheet.create({
         height: 210,
         marginTop: 30
     },
+    button:{ 
+      backgroundColor: 'purple', 
+      borderRadius: 10,
+      width: 100,
+      height: 40,
+      alignItems: 'center',
+      justifyContent: 'center',
+      marginTop: 20,
+      marginLeft: 135
+    }, 
+    loginText:{
+      color:'white', 
+      fontWeight:'bold',
+    }
 })
