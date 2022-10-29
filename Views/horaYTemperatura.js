@@ -52,22 +52,17 @@ const HoraYTemperatura = () => {
     })();
   }, []);
 
-
-
-  // API URL: https://rapidapi.com/weatherbit/api/weather/
-
-  // BUSCAR API QUE ANDE WEY
-
   return (
     <View style={styles.container}>
 
       <ImageBackground source={{ uri: fondo }} resizeMode="cover" style={styles.image}>
 
 
-        <View style={{ marginTop: 15 }}>
-          <Text style={styles.text}>Hora actual: {date}</Text>
-          <Text style={styles.text}>Temperatura actual: </Text>
-          <Text style={styles.text}>{temp ? temp : "buscando..."} </Text>
+        <View style={{ marginBottom: 35, textAlign: 'center' }}>
+          <Text style={styles.textBold}>Hora actual</Text>
+          <Text style={styles.textSoft}>{date}</Text>
+          <Text style={styles.textBold}>Temperatura actual</Text>
+          <Text style={styles.textSoft}>{temp ? temp : "buscando..."} </Text>
 
         </View>
       </ImageBackground>
@@ -81,10 +76,21 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
   },
-  text: {
+  textSoft: {
     marginTop: 10,
     fontSize: 30,
-    color: "white",
+    color: "purple",
+    textAlign: 'center', 
+    marginBottom: 30,
+  },
+  textBold: {
+    marginTop: 10,
+    fontSize: 30,
+    color: "purple",
+    fontWeight: "bold",
+    textAlign: 'center', 
+    marginBottom: -10,
+    textDecorationLine: 'underline',
   },
   image: {
     flex: 1,

@@ -25,7 +25,7 @@ export default function App() {
   return (
     <FondoProvider>
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="VideoFavorito">
+      <Stack.Navigator initialRouteName="HoraYTemperatura">
         <Stack.Screen name="Home" component={Home}
           options={{
             headerShown: false,

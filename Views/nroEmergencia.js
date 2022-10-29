@@ -105,7 +105,9 @@ const styles = StyleSheet.create({
         borderRadius: 10,
     },
     buttonTextStyle: {
-        padding: 15,
+        paddingLeft: 15,
+        paddingRight: 15,
+        paddingVertical: 5,
         color: 'white',
         textAlign: 'center',
         fontSize: 22, 
