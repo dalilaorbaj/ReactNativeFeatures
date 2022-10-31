@@ -50,9 +50,6 @@ const Home = () => {
       </View>
 
       <View style={{ flexDirection: "row", marginTop: 60, justifyContent: "space-around" }}>
-      <TouchableOpacity onPress={()=> navigation.navigate("Contactos")}>
-        <Icon7 name="message-square" size={80} color="purple" />
-      </TouchableOpacity>
 
       <TouchableOpacity onPress={()=> navigation.navigate("Contactos")}>
         <Icon name="ios-call-outline" size={70} color="purple" />

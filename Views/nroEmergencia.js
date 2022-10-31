@@ -1,6 +1,7 @@
-import { View, Text, SafeAreaView, StyleSheet, TextInput, TouchableOpacity, ScrollView } from 'react-native'
+import { View, Text, SafeAreaView, StyleSheet, TextInput, TouchableOpacity, ScrollView, ImageBackground } from 'react-native'
 import React, {useState, useContext} from 'react'
 import AsyncStorage from '@react-native-async-storage/async-storage'
+import FondoImagenContext from '../Contexts/FondoImagenContext'
 
 //CAMBIAR LOS ESTILOS DE ESTA VIEW (titulo y botones, centrar y temañao)
 
@@ -9,6 +10,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage'
 const NumeroEmergencia = () => {
     const [numero, setNumero] = useState('')
     const [value, setValue] = useState('')
+    const {fondo, setFondo} = useContext(FondoImagenContext);
 
     const saveValue = () =>{
         if(numero){
@@ -28,8 +30,10 @@ const NumeroEmergencia = () => {
     }
 
     return (
-        <SafeAreaView style={{flex:1}}>
+        <SafeAreaView style={{flex:1}}>            
+        <ImageBackground source={{ uri: fondo }} resizeMode="cover" style={styles.image}>
             <View style={styles.container}>
+
                 <View style={styles.container}>
                         <ScrollView>
                         <View style={styles.input}>
@@ -51,8 +55,8 @@ const NumeroEmergencia = () => {
                         <Text style={styles.textStyle}>{value}</Text>
                         </ScrollView>
                     </View>
-               
-            </View>
+            </View>               
+            </ImageBackground>
         </SafeAreaView>
     )
 }
@@ -143,7 +147,8 @@ const styles = StyleSheet.create({
     },  
     image: {
         flex: 1,
-        justifyContent: "center",
+        width: '100%', 
+        height: '105%',
     },
     appButtonContainer: {
     elevation: 8,

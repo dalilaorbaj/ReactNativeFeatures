@@ -58,6 +58,7 @@ export default function Contactos() {
   return (
 
     <View style={styles.container}>
+            <ImageBackground source={{ uri: fondo }} resizeMode="cover" style={styles.image}>
       <FlatList
         data={contacts}
         renderItem={({ item }) => (
@@ -72,6 +73,7 @@ export default function Contactos() {
         keyExtractor={(item) => item.id}
       />
       <StatusBar style="auto" />
+      </ImageBackground>
     </View>
   );
 }
