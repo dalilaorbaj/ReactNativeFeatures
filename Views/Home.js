@@ -1,5 +1,8 @@
-import { View, Text, StyleSheet, StatusBar, TouchableOpacity } from 'react-native'
-import React from 'react'
+import { View, Text, StyleSheet, StatusBar, TouchableOpacity, Button, Linking, ImageBackground } from 'react-native'
+import React, { useState, useEffect } from "react";
+import { Accelerometer } from "expo-sensors";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import * as ImagePicker from "expo-image-picker";
 import Icon from 'react-native-vector-icons/Ionicons';
 import Icon2 from 'react-native-vector-icons/AntDesign';
 import Icon3 from 'react-native-vector-icons/FontAwesome5';
@@ -8,18 +11,56 @@ import Icon5 from 'react-native-vector-icons/MaterialCommunityIcons';
 import Icon6 from 'react-native-vector-icons/FontAwesome';
 import Icon7 from 'react-native-vector-icons/Feather';
 
-import { useNavigation } from "@react-navigation/native";
 
-
-const Home = () => {
-  const navigation = useNavigation();
+const Home = ({ navigation }) => {
+    const [data, setData] = useState({
+      x: 0,
+      y: 0,
+      z: 0,
+    });
+    const [subscription, setSubscription] = useState(null);
+    const [numero, setNumero] = useState("");
+    const [image, setImage] = useState(null);
+    const [fondo, setFondo] = useState(null);
+  
+    const _subscribe = () => {
+      setSubscription(
+        Accelerometer.addListener((accelerometerData) => {
+          setData(accelerometerData);
+        })
+      );
+    };
+  
+    const _unsubscribe = () => {
+      subscription && subscription.remove();
+      setSubscription(null);
+    };
+  
+    const obtenerNumero = async () => {
+      const numLocal = await AsyncStorage.getItem("numero");
+      setNumero(numLocal);
+    };
+  
+    useEffect(() => {
+        obtenerNumero();
+        _subscribe();
+      return () => _unsubscribe();
+    }, []);
+  
+    const { x, y, z } = data;
+  
+    useEffect(() => {
+      if (x > 2 || y > 2 || z > 2) {
+        Linking.openURL(`https://wa.me/549${numero}?text=SOS porfa ayuda`);
+      }
+    }, [x, y, z]);
 
   return (
     <View style={styles.container}>
       <StatusBar barStyle="dark-content" />
       <Text style={styles.text}>Bienvenido!</Text>
 
-      <View style={{ flexDirection: "row", marginTop: 65, justifyContent: "space-around" }}>
+      <View style={{ flexDirection: "row", marginTop: 95, justifyContent: "space-around" }}>
         <TouchableOpacity onPress={()=> navigation.navigate("HoraTemp")}>
           <Icon name="partly-sunny-outline" size={80} color="purple" />
         </TouchableOpacity>
@@ -49,12 +90,6 @@ const Home = () => {
       </TouchableOpacity>
       </View>
 
-      <View style={{ flexDirection: "row", marginTop: 60, justifyContent: "space-around" }}>
-
-      <TouchableOpacity onPress={()=> navigation.navigate("Contactos")}>
-        <Icon name="ios-call-outline" size={70} color="purple" />
-      </TouchableOpacity>
-      </View>
     </View>
   )
 }

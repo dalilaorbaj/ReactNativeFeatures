@@ -59,11 +59,6 @@ export default function App() {
               headerTitle: "Imágen fondo",
             }} />
 
-          <Stack.Screen name="LlamadoEmergencia" component={Contactos}
-            options={{
-              headerTitle: "Imágen fondo",
-            }} />
-
         </Stack.Navigator>
       </NavigationContainer>
     </FondoProvider>

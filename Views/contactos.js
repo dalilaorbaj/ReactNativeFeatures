@@ -63,7 +63,7 @@ export default function Contactos() {
         data={contacts}
         renderItem={({ item }) => (
             
-          <TouchableOpacity>
+          <TouchableOpacity key={item.id}>
             <View style={styles.contenedor}>
               <Text style={styles.text}> {item.name}</Text>
               {getPhoneNumbers(item)}
